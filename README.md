@@ -2,6 +2,9 @@
 
 ## 修复远程扫码问题
 
+## 截止 2021年6月28日11:41:40 测试正常 
+![image](https://user-images.githubusercontent.com/21352718/123577157-ded6fe80-d805-11eb-80fd-36f0dea30d24.png)
+
 ## 简介
 
 本程序仅限青龙面板2.0对接使用。
