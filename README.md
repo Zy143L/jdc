@@ -8,6 +8,13 @@ https://github.com/Zy143L/JDC_WEB
 ## 配套青龙2.2-066 不升级版本
 https://hub.docker.com/r/limoe/qinglong
 
+## 资源静态编译 修正部分缺依赖的问题 群晖 N1 玩客云 Docker已测试支持
+![image](https://user-images.githubusercontent.com/21352718/123640178-7c0c5400-d853-11eb-9c1c-625a54c4d7ff.png)
+![image](https://user-images.githubusercontent.com/21352718/123640300-9b0ae600-d853-11eb-8c35-eb89f7defc5e.png)
+![image](https://user-images.githubusercontent.com/21352718/123640624-f1782480-d853-11eb-81d3-b247e9ca9385.png)
+![image](https://user-images.githubusercontent.com/21352718/123640997-55025200-d854-11eb-81e8-a3c30633cde0.png)
+
+
 ## Docker无法使用的 去docker下执行
 ```
 apk add libc6-compat
