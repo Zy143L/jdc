@@ -5,6 +5,9 @@
 ## 配套前端地址
 https://github.com/Zy143L/JDC_WEB
 
+## 配套青龙2.2-066 不升级版本
+https://hub.docker.com/r/limoe/qinglong
+
 ### 使用方法 不再赘述 会用的都会用 
 
 ```
