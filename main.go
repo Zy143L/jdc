@@ -23,16 +23,16 @@ var QLurl string
 var Config string = `
 #公告设置
 [app]
-    path            = "ql" #青龙面板映射文件夹名称,一般为QL或ql
+    path            = "QL" #青龙面板映射文件夹名称,一般为QL或ql
     QLip            = "http://127.0.0.1" #青龙面板的ip
     QLport          = "5700" #青龙面板的端口，默认为5700
     notice          = "使用京东扫描二维码登录" #公告/说明
     pushQr          = "" #消息推送二维码链接
-    logName         = "chinnkarahoi_jd_scripts_jd_bean_change" #日志脚本名称
+    logName         = "panghu999_jd_scripts_jd_bean_change" #日志脚本名称
     allowAdd        = 0 #是否允许添加账号（0允许1不允许）不允许添加时则只允许已有账号登录
     allowNum        = 99 #允许添加账号的最大数量,-1为不限制
-	dumpRouterMap   = false #路由显示，无需更改
-	cookieAutoCheck = 0 #自动检测所有cookie并进行失效删除/禁用，0为不检测，1为失效禁用，2为失效删除(每个小时检测一次)
+    dumpRouterMap   = false #路由显示，无需更改
+    cookieAutoCheck = 0 #自动检测所有cookie并进行失效删除/禁用，0为不检测，1为失效禁用，2为失效删除(每个小时检测一次)
 
 
 #web服务设置
@@ -133,11 +133,10 @@ func printInfo() {
 |\  \\_\  \ \  \_\\ \ \  \____  
 \ \________\ \_______\ \_______\
  \|________|\|_______|\|_______|
-                                
+Build By limoe                  
                                 
                                 
 	`)
-	//upInstallInfo()
 }
 
 //获取服务器信息
@@ -538,13 +537,6 @@ func addCookie(cookie string) (int, string) {
 
 }
 
-//获取安装信息
-func upInstallInfo() {
-	c := g.Client()
-	r, _ := c.Post("http://j.ihuayu8.cn/install_info_upload", g.Map{"port": g.Cfg().GetString("server.address")})
-	defer r.Close()
-}
-
 //解析cookie
 func parseCookie(raw string) map[string]string {
 	result := make(map[string]string)
@@ -579,7 +571,7 @@ func checkLogin(token string, okl_token string, cookies string) (int, string) {
 		"Accept-Language": "zh-cn",
 		"Cookie":          cookies,
 		"Referer":         loginUrl,
-		"User-Agent":      "jdapp;android;10.0.5;11;0393465333165363-5333430323261366;network/wifi;model/M2102K1C;osVer/30;appBuild/88681;partner/lc001;eufv/1;jdSupportDarkMode/0;Mozilla/5.0 (Linux; Android 11; M2102K1C Build/RKQ1.201112.002; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/77.0.3865.120 MQQBrowser/6.2 TBS/045534 Mobile Safari/537.36",
+		"User-Agent":      "jdapp;android;10.0.5;11;"+ Ntime + ";network/wifi;model/M2102K1C;osVer/30;appBuild/88681;partner/lc001;eufv/1;jdSupportDarkMode/0;Mozilla/5.0 (Linux; Android 11; M2102K1C Build/RKQ1.201112.002; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/77.0.3865.120 MQQBrowser/6.2 TBS/045534 Mobile Safari/537.36",
 	}
 	c := g.Client()
 	c.SetHeaderMap(headers)
@@ -615,7 +607,7 @@ func getQrcode() interface{} {
 		"Accept":          "application/json, text/plain, */*",
 		"Accept-Language": "zh-cn",
 		"Referer":         loginUrl,
-		"User-Agent":      "jdapp;android;10.0.5;11;0393465333165363-5333430323261366;network/wifi;model/M2102K1C;osVer/30;appBuild/88681;partner/lc001;eufv/1;jdSupportDarkMode/0;Mozilla/5.0 (Linux; Android 11; M2102K1C Build/RKQ1.201112.002; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/77.0.3865.120 MQQBrowser/6.2 TBS/045534 Mobile Safari/537.36",
+		"User-Agent":      "jdapp;android;10.0.5;11;" + Ntime + ";network/wifi;model/M2102K1C;osVer/30;appBuild/88681;partner/lc001;eufv/1;jdSupportDarkMode/0;Mozilla/5.0 (Linux; Android 11; M2102K1C Build/RKQ1.201112.002; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/77.0.3865.120 MQQBrowser/6.2 TBS/045534 Mobile Safari/537.36",
 	}
 	c := g.Client()
 	c.SetHeaderMap(headers)
@@ -649,7 +641,7 @@ func getQrcode() interface{} {
 		"Accept":          "application/json, text/plain, */*",
 		"Accept-Language": "zh-cn",
 		"Referer":         loginUrl,
-		"User-Agent":      "jdapp;android;10.0.5;11;0393465333165363-5333430323261366;network/wifi;model/M2102K1C;osVer/30;appBuild/88681;partner/lc001;eufv/1;jdSupportDarkMode/0;Mozilla/5.0 (Linux; Android 11; M2102K1C Build/RKQ1.201112.002; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/77.0.3865.120 MQQBrowser/6.2 TBS/045534 Mobile Safari/537.36",
+		"User-Agent":      "jdapp;android;10.0.5;11;" + Ntime +";network/wifi;model/M2102K1C;osVer/30;appBuild/88681;partner/lc001;eufv/1;jdSupportDarkMode/0;Mozilla/5.0 (Linux; Android 11; M2102K1C Build/RKQ1.201112.002; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/77.0.3865.120 MQQBrowser/6.2 TBS/045534 Mobile Safari/537.36",
 		"Host":            "plogin.m.jd.com",
 	}
 	c.SetHeaderMap(headers)
