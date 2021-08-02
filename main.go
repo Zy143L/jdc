@@ -19,11 +19,12 @@ import (
 
 var QLheader map[string]string
 var path string
+var ua string
 var QLurl string
 var Config string = `
 #公告设置
 [app]
-    path            = "QL" #青龙面板映射文件夹名称,一般为QL或ql
+    path            = "ql" #青龙面板映射文件夹名称,一般为QL或ql
     QLip            = "http://127.0.0.1" #青龙面板的ip
     QLport          = "5700" #青龙面板的端口，默认为5700
     notice          = "使用京东扫描二维码登录" #公告/说明
@@ -33,7 +34,7 @@ var Config string = `
     allowNum        = 99 #允许添加账号的最大数量,-1为不限制
     dumpRouterMap   = false #路由显示，无需更改
     cookieAutoCheck = 0 #自动检测所有cookie并进行失效删除/禁用，0为不检测，1为失效禁用，2为失效删除(每个小时检测一次)
-
+    UA              = "Mozilla/5.0 (iPhone; CPU iPhone OS 13_3_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148 SP-engine/2.14.0 main/1.0 baiduboxapp/11.18.0.16 (Baidu; P2 13.3.1) NABar/0.0"
 
 #web服务设置
 [server]
@@ -49,6 +50,9 @@ var Config string = `
 func main() {
 	//检查配置文件
 	checkConfig()
+
+	//GET UA
+	ua = g.Cfg().GetString("app.UA")
 
 	//设置ptah
 	path = g.Cfg().GetString("app.path")
@@ -571,7 +575,7 @@ func checkLogin(token string, okl_token string, cookies string) (int, string) {
 		"Accept-Language": "zh-cn",
 		"Cookie":          cookies,
 		"Referer":         loginUrl,
-		"User-Agent":      "jdapp;android;10.0.5;11;"+ Ntime + ";network/wifi;model/M2102K1C;osVer/30;appBuild/88681;partner/lc001;eufv/1;jdSupportDarkMode/0;Mozilla/5.0 (Linux; Android 11; M2102K1C Build/RKQ1.201112.002; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/77.0.3865.120 MQQBrowser/6.2 TBS/045534 Mobile Safari/537.36",
+		"User-Agent":      ua,
 	}
 	c := g.Client()
 	c.SetHeaderMap(headers)
@@ -607,7 +611,7 @@ func getQrcode() interface{} {
 		"Accept":          "application/json, text/plain, */*",
 		"Accept-Language": "zh-cn",
 		"Referer":         loginUrl,
-		"User-Agent":      "jdapp;android;10.0.5;11;" + Ntime + ";network/wifi;model/M2102K1C;osVer/30;appBuild/88681;partner/lc001;eufv/1;jdSupportDarkMode/0;Mozilla/5.0 (Linux; Android 11; M2102K1C Build/RKQ1.201112.002; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/77.0.3865.120 MQQBrowser/6.2 TBS/045534 Mobile Safari/537.36",
+		"User-Agent":      ua,
 	}
 	c := g.Client()
 	c.SetHeaderMap(headers)
@@ -641,7 +645,7 @@ func getQrcode() interface{} {
 		"Accept":          "application/json, text/plain, */*",
 		"Accept-Language": "zh-cn",
 		"Referer":         loginUrl,
-		"User-Agent":      "jdapp;android;10.0.5;11;" + Ntime +";network/wifi;model/M2102K1C;osVer/30;appBuild/88681;partner/lc001;eufv/1;jdSupportDarkMode/0;Mozilla/5.0 (Linux; Android 11; M2102K1C Build/RKQ1.201112.002; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/77.0.3865.120 MQQBrowser/6.2 TBS/045534 Mobile Safari/537.36",
+		"User-Agent":      ua,
 		"Host":            "plogin.m.jd.com",
 	}
 	c.SetHeaderMap(headers)

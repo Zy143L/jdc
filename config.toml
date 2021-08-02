@@ -1,35 +1,24 @@
+
 #公告设置
 [app]
-    path            = "QL" #青龙面板映射文件夹名称,一般为QL或ql
-    QLip            = "http://13.75.0.184" #青龙面板的ip，部署于一台服务器时不用更改
+    path            = "ql" #青龙面板映射文件夹名称,一般为QL或ql
+    QLip            = "http://127.0.0.1" #青龙面板的ip
     QLport          = "5700" #青龙面板的端口，默认为5700
-    notice          = "京东扫描二维码登录" #公告/说明
+    notice          = "使用京东扫描二维码登录" #公告/说明
     pushQr          = "" #消息推送二维码链接
-    logName         = "chinnkarahoi_jd_scripts_jd_bean_change" #日志脚本名称
+    logName         = "panghu999_jd_scripts_jd_bean_change" #日志脚本名称
     allowAdd        = 0 #是否允许添加账号（0允许1不允许）不允许添加时则只允许已有账号登录
     allowNum        = 99 #允许添加账号的最大数量,-1为不限制
-    cookieAutoCheck = 1 #自动检测所有cookie并进行失效删除/禁用，0为不检测，1为失效禁用，2为失效删除(每个小时检测一次)
-
+    dumpRouterMap   = false #路由显示，无需更改
+    cookieAutoCheck = 0 #自动检测所有cookie并进行失效删除/禁用，0为不检测，1为失效禁用，2为失效删除(每个小时检测一次)
+    UA              = "Mozilla/5.0 (iPhone; CPU iPhone OS 13_3_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148 SP-engine/2.14.0 main/1.0 baiduboxapp/11.18.0.16 (Baidu; P2 13.3.1) NABar/0.0"
 
 #web服务设置
 [server]
     address         = ":5701" #端口号设置
     serverRoot      = "public" #静态目录设置，请勿更改
-    serverAgent     = "JDC" #服务端UA
+    serverAgent     = "JDCookie" #服务端UA
 
 #模板设置
 [viewer]
     Delimiters      = ["${", "}"] #模板标签，请勿更改
-
-#cli工具设置
-[gfcli]
-    [gfcli.build]
-        name     = "JDC"
-        arch     = "amd64"
-        system   = "linux"
-        mod      = "none"
-        cgo      = 0
-        pack     = ""
-        version  = "v2.0.2"
-        output   = "./bin"
-        extra    = ""
