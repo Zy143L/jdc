@@ -1,5 +1,7 @@
 # 青龙面板小工具 适用于V2.2面板 V2.8不可用 
 ## 更新日期2021年8月2日18:51:06
+----
+## 引入外部UA设置 请查看 [下载地址](https://github.com/Zy143L/jdc/releases)
 ## 建议大家升级到2.8的青龙配合[Ninja](https://github.com/MoonBegonia/ninja)使用
 ----
 
